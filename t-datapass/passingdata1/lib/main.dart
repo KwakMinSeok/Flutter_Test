@@ -22,7 +22,14 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 var newtitle;
 var sayhi="hi";
+var empty;
 _MyHomePageState({this.newtitle});
+Future<dynamic> myfuture(hello) async{
+print(1);
+await print(hello);
+print(3);
+
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,32 +37,25 @@ _MyHomePageState({this.newtitle});
       body: Center(
         child: Column(
           children: <Widget>[
-           NewWidget(mytext: sayhi),
-            Text("$newtitle")
+            Text("$newtitle"),
+          NewWidget(myonetext: empty,mytwotext:sayhi),
+            
           ],
         ),
       ),
     );
   }
 }
-Widget check(a)=> NewWidget(mytext: a);
+Widget check(a,b)=> NewWidget(myonetext: a,mytwotext:b);
 class NewWidget extends StatelessWidget {
-  NewWidget({this.mytext});
-  var mytext;
+  NewWidget({this.myonetext,this.mytwotext});
+  var myonetext;
+  var mytwotext;
   @override
   Widget build(BuildContext context) {
     return Text(
-      "$mytext"
-      
-    );
-  }
-}
-class MyWidget extends StatelessWidget {
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      
+      "$myonetext"
+      "$mytwotext"
     );
   }
 }
